@@ -1,0 +1,77 @@
+{
+  "tokens": {
+    "ELusVXzUPHyAuPB3M7qemr2Y2KshiWnGXauK17XYpump": {
+      "mint": "ELusVXzUPHyAuPB3M7qemr2Y2KshiWnGXauK17XYpump",
+      "name": "ClawedCode Token",
+      "symbol": "CLAWED",
+      "decimals": 6,
+      "logoURI": "/wallet/assets/clawed.jpg",
+      "description": "The official ClawedCode token",
+      "tags": ["community"],
+      "addedAt": "2025-10-06T15:10:00.000Z",
+      "pools": [
+        {
+          "address": "446Jfyn2jmnGL4CzJ9wFx1j1QUP6Fv1GJuUNXbyv5ns1",
+          "dex": "raydium",
+          "type": "Concentrated"
+        },
+        {
+          "address": "J1xtTD1X1fE7Bme45nJyUc51HPobJtzNXXEL3AHaxTJq",
+          "dex": "pumpswap",
+          "type": "Standard",
+          "coinCreator": "6puS3djvUhKtsmiHYV1CxA64CNv21U9EkN9a4sYWVTU4",
+          "coinCreatorVaultAuthority": "PCnHchnEXbxk9ToZRqSYpffm82tP2bgjhHnkfkVXJ6f",
+          "baseMint": "ELusVXzUPHyAuPB3M7qemr2Y2KshiWnGXauK17XYpump",
+          "quoteMint": "So11111111111111111111111111111111111111112",
+          "baseVault": "7hsZRuoWN9EfSs5FgLAhiSGxDPzMeH3aUL7AsPLPjrMc",
+          "quoteVault": "DRo9nFtZeTerxxca5jKnD7rVYxRrvRC6DmH3XHnyGqxw"
+        },
+        {
+          "address": "6J6Z6gMV6CFtfYbKU8MYS5Qh5dKE6piBXGjxrd2bvPPm",
+          "dex": "raydium",
+          "type": "Standard"
+        }
+      ],
+      "tradingWallet": "FMBQY4uKt7xWSxVB9SszEzpCytxy8fQJ8UNUeJfjvgDH"
+    },
+    "HUWmA5RJQGZf7xTvkj3XfJH34q4dm487UmWZ32EyvZxh": {
+      "mint": "HUWmA5RJQGZf7xTvkj3XfJH34q4dm487UmWZ32EyvZxh",
+      "name": "CatGPT Token",
+      "symbol": "CATGPT",
+      "decimals": 6,
+      "logoURI": "/wallet/assets/catgpt.png",
+      "description": "The official CatGPT token",
+      "tags": ["community"],
+      "addedAt": "2025-10-06T15:10:00.000Z",
+      "pools": [
+        {
+          "address": "GKj531sxDx9iF2RFiFw717tpsim8hqzpmf8ZMMgKLNXF",
+          "dex": "pumpswap",
+          "type": "Standard",
+          "coinCreator": "4LSvcbiLGYMZDc3oVXiHh7g2MuYpGL628HcobHmCFKs9",
+          "coinCreatorVaultAuthority": "BFPYqbo3daEqsLAuN6TU8tuENyyYWiHYS7h3nPtg8HS1",
+          "baseMint": "HUWmA5RJQGZf7xTvkj3XfJH34q4dm487UmWZ32EyvZxh",
+          "quoteMint": "So11111111111111111111111111111111111111112",
+          "baseVault": "EYpTZ4oEckdd2wzWrAHTnquQ8b736VEEFGYHm85ofEim",
+          "quoteVault": "9U99KJeVLxvx1HHq9WrecPMh4b9Y7X55rqGkPHkGeDPs"
+        },
+        {
+          "address": "BW8ayaRgrRFPGjtqjjFMA3DbZHk5zQjAA7c7bGHMT9xP",
+          "dex": "raydium",
+          "type": "Standard"
+        }
+      ],
+      "tradingWallet": "FMBQY4uKt7xWSxVB9SszEzpCytxy8fQJ8UNUeJfjvgDH"
+    }
+  },
+  "tradingSettings": {
+    "minProfitThreshold": 0.5,
+    "minProfitThresholdCLMM": 5,
+    "refreshInterval": "30s",
+    "maxSlippage": 1,
+    "enabled": true,
+    "defaultTradingWallet": "FMBQY4uKt7xWSxVB9SszEzpCytxy8fQJ8UNUeJfjvgDH",
+    "confirmationMaxRetries": 5,
+    "confirmationTimeoutMs": 60000
+  }
+}
