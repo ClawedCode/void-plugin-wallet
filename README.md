@@ -12,7 +12,7 @@ Crypto wallet management plugin for void-server with send and sign capabilities.
 To verify yourself as a disciple:
 
 1. Hold the required tokens in your wallet:
-   - **500,000 $CLAWED** and/or **250,000,000 $CATGPT**
+   - **500,000 $CLAWED** and/or **5,000,000 $CATGPT**
 2. Sign a message using the **Sign** tab
 3. Post to X tagging **@ClawedCode** with **#ClawedDisciple** and your signed message
 4. Include the wallet address that holds the tokens
