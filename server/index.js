@@ -216,13 +216,18 @@ module.exports = (app, config = {}) => {
       return res.status(400).json({ success: false, error: 'Public key and message required' });
     }
 
-    const result = walletService.signMessage(publicKey, message);
-    if (result.success) {
-      console.log(`✅ Message signed`);
-    } else {
-      console.log(`❌ Failed to sign: ${result.error}`);
+    try {
+      const result = walletService.signMessage(publicKey, message);
+      if (result.success) {
+        console.log(`✅ Message signed`);
+      } else {
+        console.log(`❌ Failed to sign: ${result.error}`);
+      }
+      res.json(result);
+    } catch (err) {
+      console.error(`❌ Sign message error: ${err.message}`);
+      res.status(500).json({ success: false, error: 'Failed to sign message' });
     }
-    res.json(result);
   });
 
   // Buy token with SOL
