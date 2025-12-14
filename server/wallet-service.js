@@ -5,7 +5,8 @@ const { getAccount, getMint, getAssociatedTokenAddress, createTransferInstructio
 const { derivePath } = require('ed25519-hd-key');
 const bip39 = require('bip39');
 const nacl = require('tweetnacl');
-const bs58 = require('bs58');
+const bs58Pkg = require('bs58');
+const bs58 = bs58Pkg.default || bs58Pkg; // v6+ exposes .default in CJS
 const { encrypt, decrypt } = require('./encryption');
 const http = require('../../../server/lib/http-client');
 
