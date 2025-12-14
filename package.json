@@ -1,6 +1,6 @@
 {
   "name": "void-plugin-wallet",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Crypto wallet management with buy/send/sign capabilities",
   "main": "server/index.js",
   "dependencies": {

@@ -20,8 +20,10 @@ let connection = null;
 let rpcUrl = null;
 let jupiterApiKey = null;
 
-// Jupiter API base URL (v1 requires API key)
-const JUPITER_API_BASE = 'https://api.jup.ag/swap/v1';
+// Jupiter API base URLs
+const JUPITER_API_BASE = 'https://api.jup.ag';
+const JUPITER_SWAP_BASE = `${JUPITER_API_BASE}/swap/v1`;
+const JUPITER_ULTRA_BASE = `${JUPITER_API_BASE}/ultra/v1`;
 
 /**
  * Build RPC URL from config
@@ -803,7 +805,7 @@ async function buyToken({ walletId, tokenMint, solAmount }) {
   let useUltraApi = true;
 
   // Step 1: Try Ultra API first
-  const orderUrl = `https://api.jup.ag/ultra/v1/order?inputMint=${SOL_MINT}&outputMint=${tokenMint}&amount=${inputAmount}&taker=${userPublicKey}`;
+  const orderUrl = `${JUPITER_ULTRA_BASE}/order?inputMint=${SOL_MINT}&outputMint=${tokenMint}&amount=${inputAmount}&taker=${userPublicKey}`;
   const orderResult = await http.get(orderUrl, { headers: jupiterHeaders });
 
   if (orderResult.ok && orderResult.data?.transaction) {
@@ -815,7 +817,7 @@ async function buyToken({ walletId, tokenMint, solAmount }) {
     console.log(`   📡 Ultra API unavailable, falling back to regular swap API...`);
 
     // Get quote
-    const quoteUrl = `https://api.jup.ag/swap/v1/quote?inputMint=${SOL_MINT}&outputMint=${tokenMint}&amount=${inputAmount}&slippageBps=100`;
+    const quoteUrl = `${JUPITER_SWAP_BASE}/quote?inputMint=${SOL_MINT}&outputMint=${tokenMint}&amount=${inputAmount}&slippageBps=100`;
     const quoteResult = await http.get(quoteUrl, { headers: jupiterHeaders });
 
     if (!quoteResult.ok || quoteResult.data?.error) {
@@ -823,7 +825,7 @@ async function buyToken({ walletId, tokenMint, solAmount }) {
     }
 
     // Get swap transaction
-    const swapResult = await http.post('https://api.jup.ag/swap/v1/swap', {
+    const swapResult = await http.post(`${JUPITER_SWAP_BASE}/swap`, {
       headers: jupiterHeaders,
       body: {
         quoteResponse: quoteResult.data,
@@ -863,7 +865,7 @@ async function buyToken({ walletId, tokenMint, solAmount }) {
   if (useUltraApi) {
     // Step 3a: Execute via Jupiter Ultra API (they handle broadcast + confirmation)
     console.log(`   📤 Executing swap via Jupiter Ultra...`);
-    const executeResult = await http.post('https://api.jup.ag/ultra/v1/execute', {
+    const executeResult = await http.post(`${JUPITER_ULTRA_BASE}/execute`, {
       headers: jupiterHeaders,
       body: {
         signedTransaction,
@@ -886,7 +888,7 @@ async function buyToken({ walletId, tokenMint, solAmount }) {
       while (Date.now() - startTime < 30000) {
         await new Promise(r => setTimeout(r, 1000));
 
-        const pollResult = await http.post('https://api.jup.ag/ultra/v1/execute', {
+        const pollResult = await http.post(`${JUPITER_ULTRA_BASE}/execute`, {
           headers: jupiterHeaders,
           body: {
             signedTransaction,
